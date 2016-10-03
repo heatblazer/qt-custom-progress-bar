@@ -17,7 +17,7 @@ public:
 private:
     void _drawBaseLine(QPoint x1, QPoint x2, QColor color, QPainter * const pnt, QPainterPath* path);
     void _drawRuler(int step, QColor color, QPainter* const pnt, QPainterPath *path);
-
+    void _drawText(QPoint pos, QString txt, QPainter* const pnt, QPainterPath* path);
 private:
     int m_width;
     int m_height;
