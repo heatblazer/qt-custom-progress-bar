@@ -10,7 +10,7 @@ class Test;
 class VuMeter : public QWidget
 {
 public:
-    explicit VuMeter(int width, int height, QWidget* parent=nullptr);
+    explicit VuMeter(int width, int height, QWidget* parent=0);
     virtual ~VuMeter();
     void setPixDiff(unsigned int pdiff);
     void setRoundingRadius(qreal r);

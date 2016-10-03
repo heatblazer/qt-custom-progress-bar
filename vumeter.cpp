@@ -3,6 +3,15 @@
 #include <QRect>
 #include <QPainter>
 
+extern const char* const RADIS_BLUE = "#214478";
+extern const char* const RADIS_BLUE2 = "#214460";
+extern const char* const RADIS_RED  = "#E61B1B";
+extern const char* const RADIS_YELLOW = "#DAE61B";
+extern const char* const RADIS_GREEN  = "#52C277";
+extern const char* const RADIS_RIBBON = "#9B9BF4";
+
+
+
 VuMeter::VuMeter(int width, int height, QWidget *parent)
     : QWidget(parent),
       m_totalWidth(width),
@@ -43,9 +52,9 @@ void VuMeter::paintEvent(QPaintEvent *ev)
     QPainterPath path;
     //draw bounds
     _drawBorders(QColor(0,0,0), QRect(0, 0, m_totalWidth, m_totalHeight), &pnt);
-    _fillFromTo(QPoint(m_pixDiff, m_positions.vu), QPoint(m_pixDiff, m_totalHeight), QColor(0, 0, 200), &pnt, &path);
-    _fillFromTo(QPoint(m_pixDiff, m_positions.rms), QPoint(m_pixDiff, m_totalHeight), QColor(0, 0, 255), &pnt, &path);
-    _drawLine(QPoint(m_pixDiff, m_positions.peak), QColor(255, 0, 0), &pnt, &path);
+    _fillFromTo(QPoint(m_pixDiff, m_positions.vu), QPoint(m_pixDiff, m_totalHeight), QColor(RADIS_BLUE), &pnt, &path);
+    _fillFromTo(QPoint(m_pixDiff, m_positions.rms), QPoint(m_pixDiff, m_totalHeight), QColor(RADIS_BLUE2), &pnt, &path);
+    _drawLine(QPoint(m_pixDiff, m_positions.peak), QColor(RADIS_RED), &pnt, &path);
 
 }
 
