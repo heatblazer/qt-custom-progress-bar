@@ -3,22 +3,24 @@
 #include "vumeter.h"
 #include "vuscale.h"
 
+
+
 Test::Test(QWidget *parent)
     : QWidget(parent),
-      p_meter(nullptr),
-      p_scale(nullptr)
+      p_meter(0),
+      p_scale(0)
 {
 
-    p_meter = new VuMeter(50, 200, this);
+    p_meter = new VuMeter(60, 200, this);
     p_meter->setPixDiff(1);
     p_meter->setRoundingRadius(3);
 
-    p_scale = new VuScale(this);
+    p_scale = new VuScale(30, 200, new QFont("times", 16), this);
 
     m_vbox.addWidget(p_meter);
     m_vbox.addWidget(p_scale);
     setLayout(&m_vbox);
-    setMinimumSize(QSize(100, 500));
+    setMinimumSize(QSize(160, 500));
 
 
 }
@@ -36,6 +38,7 @@ void Test::showAll()
     m_timer.start();
     show();
     p_meter->show();
+    p_scale->show();
 
 }
 
