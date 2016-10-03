@@ -16,6 +16,10 @@ public:
     void setRoundingRadius(qreal r);
     void paintEvent(QPaintEvent* ev);
 
+    void setPeakPos(int pos);
+    void setRMSPost(int pos);
+    void setVUPos(int pos);
+
 private:
 
     void _fillFromTo(QPoint p1, QPoint p2, QColor color, QPainter* const pnt, QPainterPath* const path);
@@ -29,6 +33,12 @@ private:
     int m_totalHeight;
     qreal m_roundRad;
     unsigned int m_pixDiff;
+
+    struct {
+        int peak;
+        int rms;
+        int vu;
+    } m_positions;
 
     friend class Test;
 };

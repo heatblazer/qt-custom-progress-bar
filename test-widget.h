@@ -11,19 +11,22 @@ class VuScale;
 
 class Test : public QWidget
 {
+    Q_OBJECT
 public:
     explicit Test(QWidget* parent=nullptr);
     virtual ~Test();
 
     void showAll();
 
+private slots:
+    void hTimeout();
 private:
 
     VuMeter* p_meter;
     VuScale* p_scale;
 
     QVBoxLayout m_vbox;
-    QTimer m_timers[3];
+    QTimer m_timer;
 
 };
 

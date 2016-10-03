@@ -20,7 +20,6 @@ SOURCES += main.cpp\
 HEADERS  += \
     vumeter.h \
     vuscale.h \
-    test-widget.h \
-    drawing-interface.h
+    test-widget.h
 
 FORMS    +=

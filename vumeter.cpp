@@ -12,6 +12,10 @@ VuMeter::VuMeter(int width, int height, QWidget *parent)
 {
     m_fillWidth = m_totalWidth - 2; // one pixel per each side
     m_fillHeight = m_totalHeight - 2; // one pixel per each side
+    m_positions.peak = m_fillHeight;
+    m_positions.vu = m_fillHeight;
+    m_positions.rms = m_fillHeight;
+
     setMinimumSize(QSize(m_totalWidth, m_totalHeight));
 }
 
@@ -23,26 +27,44 @@ VuMeter::~VuMeter()
 void VuMeter::setPixDiff(unsigned int pdiff)
 {
     m_pixDiff = pdiff;
+
 }
 
 void VuMeter::setRoundingRadius(qreal r)
 {
     m_roundRad = r;
+
 }
 
 void VuMeter::paintEvent(QPaintEvent *ev)
 {
     (void) ev;
-
     QPainter pnt(this);
     QPainterPath path;
     //draw bounds
-
-    _fillFromTo(QPoint(m_pixDiff, m_totalHeight), QPoint(m_pixDiff, m_totalWidth), QColor(255, 0, 0), &pnt, &path);
     _drawBorders(QColor(0,0,0), QRect(0, 0, m_totalWidth, m_totalHeight), &pnt);
-    _fillFromTo(QPoint(m_pixDiff, 15), QPoint(m_pixDiff, m_fillHeight), QColor(0, 0, 255), &pnt, &path);
-    _drawLine(QPoint(m_pixDiff, 150), QColor(255, 0, 0), &pnt, &path);
+    _fillFromTo(QPoint(m_pixDiff, m_positions.vu), QPoint(m_pixDiff, m_fillHeight), QColor(255, 0, 0), &pnt, &path);
+    _fillFromTo(QPoint(m_pixDiff, m_positions.rms), QPoint(m_pixDiff, m_fillHeight), QColor(0, 0, 255), &pnt, &path);
+    _drawLine(QPoint(m_pixDiff, m_positions.peak), QColor(255, 0, 0), &pnt, &path);
 
+}
+
+void VuMeter::setPeakPos(int pos)
+{
+    m_positions.peak = pos;
+    update();
+}
+
+void VuMeter::setRMSPost(int pos)
+{
+    m_positions.rms = pos;
+    update();
+}
+
+void VuMeter::setVUPos(int pos)
+{
+    m_positions.vu = pos;
+    update();
 }
 
 void VuMeter::_fillFromTo(QPoint p1, QPoint p2, QColor color, QPainter * const pnt, QPainterPath * const path)
