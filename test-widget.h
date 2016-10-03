@@ -13,7 +13,7 @@ class Test : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Test(QWidget* parent=nullptr);
+    explicit Test(QWidget* parent=0);
     virtual ~Test();
 
     void showAll();
@@ -25,7 +25,7 @@ private:
     VuMeter* p_meter;
     VuScale* p_scale;
 
-    QVBoxLayout m_vbox;
+    QHBoxLayout m_vbox;
     QTimer m_timer;
 
 };
