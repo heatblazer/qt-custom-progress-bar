@@ -43,8 +43,8 @@ void VuMeter::paintEvent(QPaintEvent *ev)
     QPainterPath path;
     //draw bounds
     _drawBorders(QColor(0,0,0), QRect(0, 0, m_totalWidth, m_totalHeight), &pnt);
-    _fillFromTo(QPoint(m_pixDiff, m_positions.vu), QPoint(m_pixDiff, m_fillHeight), QColor(255, 0, 0), &pnt, &path);
-    _fillFromTo(QPoint(m_pixDiff, m_positions.rms), QPoint(m_pixDiff, m_fillHeight), QColor(0, 0, 255), &pnt, &path);
+    _fillFromTo(QPoint(m_pixDiff, m_positions.vu), QPoint(m_pixDiff, m_totalHeight), QColor(0, 0, 200), &pnt, &path);
+    _fillFromTo(QPoint(m_pixDiff, m_positions.rms), QPoint(m_pixDiff, m_totalHeight), QColor(0, 0, 255), &pnt, &path);
     _drawLine(QPoint(m_pixDiff, m_positions.peak), QColor(255, 0, 0), &pnt, &path);
 
 }
